@@ -1,0 +1,146 @@
+.search-wrapper {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  max-width: 420px;
+
+  padding: 14px 18px;
+
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.28);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.35);
+
+  box-shadow:
+    0 8px 24px rgba(37,99,235,0.12);
+
+  transition: all 0.35s ease;
+}
+
+/* Focus glow */
+.search-wrapper:focus-within {
+  border-color: rgba(37,99,235,0.35);
+
+  box-shadow:
+    0 14px 30px rgba(37,99,235,0.18);
+
+  transform: translateY(-4px);
+}
+
+/* Icon */
+.search-icon {
+  margin-right: 12px;
+
+  font-size: 18px;
+
+  color: #2563eb;
+
+  opacity: 0.85;
+
+  transition: 0.3s;
+}
+
+.search-wrapper:hover .search-icon {
+  transform: scale(1.15);
+}
+
+/* Input */
+.search-bar {
+  border: none;
+  outline: none;
+
+  width: 100%;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  background: transparent;
+
+  color: #1e3a8a;
+}
+
+.search-bar::placeholder {
+  color: rgba(30,58,138,0.55);
+}
+
+/* Clear button */
+.clear-btn {
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  color: #64748b;
+
+  transition: 0.25s ease;
+}
+
+.clear-btn:hover {
+  color: #2563eb;
+
+  transform: scale(1.2);
+}
+
+/* Dark mode */
+[data-theme="dark"] .search-wrapper {
+  background: rgba(30,41,59,0.45);
+}
+
+[data-theme="dark"] .search-bar {
+  color: white;
+}
+
+[data-theme="dark"] .search-bar::placeholder {
+  color: rgba(255,255,255,0.55);
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .search-wrapper {
+    max-width: 320px;
+    padding: 13px 16px;
+  }
+
+  .search-bar {
+    font-size: 14px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .search-wrapper {
+    max-width: 100%;
+    padding: 12px 14px;
+    border-radius: 16px;
+  }
+
+  .search-bar {
+    font-size: 14px;
+  }
+
+  .search-icon {
+    font-size: 16px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .search-wrapper {
+    padding: 10px 12px;
+    border-radius: 14px;
+  }
+
+  .search-bar {
+    font-size: 13px;
+  }
+
+  .clear-btn {
+    font-size: 14px;
+  }
+}

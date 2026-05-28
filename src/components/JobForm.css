@@ -1,0 +1,140 @@
+.job-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  padding: 25px;
+
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 22px;
+
+  box-shadow:
+    0 10px 35px rgba(37,99,235,0.12);
+
+  transition: all 0.4s ease;
+}
+
+.job-form:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 20px 40px rgba(37,99,235,0.18);
+}
+
+/* Inputs + Select */
+.job-form input,
+.job-form select {
+  padding: 15px 18px;
+
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(14px);
+
+  font-size: 15px;
+  color: #1e3a8a;
+
+  outline: none;
+
+  transition: 0.35s ease;
+}
+
+.job-form input:focus,
+.job-form select:focus {
+  border-color: rgba(37,99,235,0.35);
+
+  box-shadow:
+    0 0 0 4px rgba(37,99,235,0.12);
+
+  transform: scale(1.02);
+}
+
+/* Button */
+.job-form button {
+  padding: 15px;
+
+  border: none;
+  border-radius: 16px;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #60a5fa
+  );
+
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.35s ease;
+}
+
+.job-form button:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 15px 28px rgba(37,99,235,0.22);
+}
+
+/* Dark Mode */
+[data-theme="dark"] .job-form {
+  background: rgba(30,41,59,0.45);
+}
+
+[data-theme="dark"]
+.job-form input,
+[data-theme="dark"]
+.job-form select {
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .job-form {
+    padding: 22px;
+  }
+
+  .job-form input,
+  .job-form select,
+  .job-form button {
+    font-size: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .job-form {
+    width: 100%;
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .job-form input,
+  .job-form select,
+  .job-form button {
+    padding: 14px;
+    font-size: 14px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .job-form {
+    padding: 15px;
+    border-radius: 14px;
+  }
+
+  .job-form input,
+  .job-form select,
+  .job-form button {
+    padding: 12px;
+    font-size: 13px;
+  }
+}

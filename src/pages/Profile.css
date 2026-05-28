@@ -1,0 +1,332 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(
+    135deg,
+    #dbeafe,
+    #eff6ff
+  );
+}
+
+/* Main */
+.profile-page {
+  min-height: 100vh;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 35px;
+}
+
+/* Avatar */
+.avatar {
+  width: 110px;
+  height: 110px;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 42px;
+  font-weight: bold;
+
+  color: white;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #60a5fa
+  );
+
+  box-shadow:
+    0 18px 35px rgba(37,99,235,0.22);
+
+  transition: 0.4s;
+}
+
+.avatar:hover {
+  transform: scale(1.08);
+}
+
+/* Name */
+.name {
+  font-size: 34px;
+  color: #1e3a8a;
+}
+
+.email {
+  font-size: 18px;
+  color: #6b7280;
+}
+
+/* Glass Card */
+.profile-card {
+  width: 500px;
+  padding: 35px;
+
+  border-radius: 24px;
+
+  background: rgba(255,255,255,0.28);
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.35);
+
+  box-shadow:
+    0 10px 35px rgba(31,38,135,0.14);
+
+  transition: 0.45s;
+}
+
+.profile-card:hover {
+  transform:
+    translateY(-10px)
+    scale(1.02);
+
+  box-shadow:
+    0 22px 45px rgba(37,99,235,0.18);
+}
+
+/* Info */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 18px 0;
+  font-size: 18px;
+  color: #374151;
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 16px;
+  margin-top: 18px;
+
+  border: none;
+  border-radius: 18px;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #3b82f6
+  );
+
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.4s;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 14px 28px rgba(37,99,235,0.22);
+}
+
+/* Logout */
+.danger {
+  background: linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+  );
+}
+
+.danger:hover {
+  box-shadow:
+    0 14px 28px rgba(239,68,68,0.22);
+}
+
+/* Inputs */
+.input {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 18px;
+
+  border: 2px solid rgba(37,99,235,0.18);
+  border-radius: 16px;
+
+  outline: none;
+  font-size: 16px;
+
+  background: rgba(255,255,255,0.4);
+
+  backdrop-filter: blur(12px);
+
+  transition: 0.35s;
+}
+
+.input:hover,
+.input:focus {
+  border-color: #2563eb;
+
+  transform: scale(1.02);
+
+  box-shadow:
+    0 10px 20px rgba(37,99,235,0.15);
+}
+
+/* ============================= */
+/* TABLET RESPONSIVE */
+/* ============================= */
+@media (max-width: 1024px) {
+  .profile-page {
+    padding: 35px 25px;
+  }
+
+  .profile-card {
+    width: 90%;
+    max-width: 450px;
+    padding: 28px;
+  }
+
+  .avatar {
+    width: 95px;
+    height: 95px;
+    font-size: 34px;
+  }
+
+  .name {
+    font-size: 28px;
+  }
+
+  .email {
+    font-size: 16px;
+  }
+
+  .btn {
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .input {
+    padding: 15px;
+    font-size: 15px;
+  }
+}
+
+
+/* ============================= */
+/* MOBILE RESPONSIVE */
+/* ============================= */
+@media (max-width: 768px) {
+  .profile-page {
+    padding: 25px 15px;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .profile-card {
+    width: 100%;
+    padding: 22px;
+    border-radius: 20px;
+  }
+
+  .avatar {
+    width: 85px;
+    height: 85px;
+    font-size: 30px;
+  }
+
+  .name {
+    font-size: 24px;
+  }
+
+  .email {
+    font-size: 14px;
+  }
+
+  .info-row {
+    flex-direction: column;
+    gap: 6px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .btn {
+    padding: 14px;
+    font-size: 15px;
+    border-radius: 14px;
+  }
+
+  .input {
+    padding: 14px;
+    font-size: 14px;
+    border-radius: 14px;
+  }
+}
+
+
+/* ============================= */
+/* SMALL MOBILE */
+/* ============================= */
+@media (max-width: 480px) {
+  .profile-page {
+    padding: 18px 10px;
+  }
+
+  .profile-card {
+    padding: 18px;
+  }
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+    font-size: 24px;
+  }
+
+  .name {
+    font-size: 20px;
+  }
+
+  .email {
+    font-size: 13px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .input {
+    font-size: 13px;
+    padding: 12px;
+  }
+}
+
+
+/* ============================= */
+/* EXTRA GLASS HOVER */
+/* ============================= */
+.profile-card:hover {
+  transform: translateY(-12px) scale(1.03);
+
+  box-shadow:
+    0 25px 50px rgba(37,99,235,0.22),
+    inset 0 1px 1px rgba(255,255,255,0.35);
+}
+
+.input:focus {
+  background: rgba(255,255,255,0.55);
+}
+
+.btn:hover {
+  transform: translateY(-6px) scale(1.02);
+}

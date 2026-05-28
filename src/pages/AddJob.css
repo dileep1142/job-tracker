@@ -1,0 +1,223 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #dbeafe, #eff6ff);
+}
+
+/* Main container */
+.addjob-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Glass box */
+.addjob-box {
+  width: 480px;
+  padding: 40px;
+  border-radius: 24px;
+
+  background: rgba(255,255,255,0.28);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.4);
+
+  box-shadow:
+    0 8px 32px rgba(31,38,135,0.15);
+
+  transition: all 0.45s ease;
+}
+
+.addjob-box:hover {
+  transform: translateY(-10px) scale(1.02);
+
+  box-shadow:
+    0 25px 45px rgba(37,99,235,0.18);
+}
+
+/* Heading */
+.addjob-heading {
+  text-align: center;
+  font-size: 38px;
+  color: #2563eb;
+  margin-bottom: 30px;
+}
+
+/* Inputs */
+.addjob-input,
+.addjob-select,
+.addjob-textarea {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 18px;
+
+  border: 2px solid rgba(37,99,235,0.25);
+  border-radius: 16px;
+
+  font-size: 16px;
+  outline: none;
+
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(10px);
+
+  transition: all 0.35s ease;
+}
+
+/* Input hover */
+.addjob-input:hover,
+.addjob-select:hover,
+.addjob-textarea:hover,
+.addjob-input:focus,
+.addjob-select:focus,
+.addjob-textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 10px 25px rgba(37,99,235,0.15);
+  transform: scale(1.02);
+}
+
+/* Notes box */
+.addjob-textarea {
+  min-height: 110px;
+  resize: none;
+}
+
+/* Button */
+.addjob-btn {
+  width: 100%;
+  padding: 18px;
+
+  border: none;
+  border-radius: 18px;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #3b82f6
+  );
+
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+/* Button hover */
+.addjob-btn:hover {
+  transform: translateY(-5px) scale(1.03);
+
+  box-shadow:
+    0 15px 30px rgba(37,99,235,0.28);
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .addjob-box {
+    width: 420px;
+    padding: 32px;
+  }
+
+  .addjob-heading {
+    font-size: 32px;
+  }
+
+  .addjob-input,
+  .addjob-select,
+  .addjob-textarea {
+    padding: 15px;
+    font-size: 15px;
+  }
+
+  .addjob-btn {
+    padding: 16px;
+    font-size: 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .addjob-container {
+    padding: 20px;
+  }
+
+  .addjob-box {
+    width: 100%;
+    max-width: 100%;
+
+    padding: 24px;
+
+    border-radius: 18px;
+  }
+
+  .addjob-heading {
+    font-size: 26px;
+    margin-bottom: 22px;
+  }
+
+  .addjob-input,
+  .addjob-select,
+  .addjob-textarea {
+    padding: 14px;
+    font-size: 14px;
+    border-radius: 14px;
+  }
+
+  .addjob-textarea {
+    min-height: 90px;
+  }
+
+  .addjob-btn {
+    padding: 14px;
+    font-size: 15px;
+    border-radius: 14px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .addjob-container {
+    padding: 14px;
+  }
+
+  .addjob-box {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .addjob-heading {
+    font-size: 22px;
+  }
+
+  .addjob-input,
+  .addjob-select,
+  .addjob-textarea {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .addjob-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+/* Dark mode */
+[data-theme="dark"] body {
+  background: linear-gradient(
+    135deg,
+    #0f172a,
+    #1e293b
+  );
+}
+
+[data-theme="dark"] .addjob-box {
+  background: rgba(30,41,59,0.45);
+}
+
+[data-theme="dark"] .addjob-input,
+[data-theme="dark"] .addjob-select,
+[data-theme="dark"] .addjob-textarea {
+  background: rgba(255,255,255,0.08);
+  color: white;
+}

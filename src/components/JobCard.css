@@ -1,0 +1,204 @@
+.job-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  padding: 18px;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+
+  transition: all 0.25s ease;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.job-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.10);
+}
+
+/* HEADER */
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.company {
+  font-size: 18px;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ROLE */
+.role {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* STATUS BADGE */
+.status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* STATUS COLORS */
+.status.applied {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.status.interview {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status.offer {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status.rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* BUTTON BASE */
+.btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+
+  padding: 6px 10px;
+  border-radius: 10px;
+
+  font-size: 12px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+/* SMALL BUTTON */
+.btn.small {
+  font-size: 12px;
+}
+
+/* HOVER */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* DISABLED STATE */
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* DANGER BUTTON */
+.btn.danger {
+  background: #ef4444;
+  color: white;
+  border: none;
+}
+
+.btn.danger:hover {
+  background: #dc2626;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .job-card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .company {
+    font-size: 16px;
+  }
+
+  .role {
+    font-size: 13px;
+  }
+
+  .status {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .job-card {
+    width: 100%;
+    padding: 14px;
+  }
+
+  .job-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .company {
+    font-size: 15px;
+  }
+
+  .role {
+    font-size: 12px;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .btn {
+    flex: 1;
+    padding: 10px;
+    font-size: 12px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .job-card {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .btn {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .company {
+    font-size: 14px;
+  }
+
+  .status {
+    width: fit-content;
+  }
+}

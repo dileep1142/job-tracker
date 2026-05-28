@@ -1,0 +1,166 @@
+:root {
+  --glass: rgba(255,255,255,0.25);
+  --text: #1e3a8a;
+  --blue: #2563eb;
+}
+
+[data-theme="dark"] {
+  --glass: rgba(30,41,59,0.45);
+  --text: white;
+  --blue: #60a5fa;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  padding: 30px 20px;
+
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+
+  border-right: 1px solid rgba(255,255,255,0.2);
+
+  box-shadow: 8px 0 30px rgba(37,99,235,0.12);
+}
+
+/* Logo */
+.logo {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--blue);
+
+  margin-bottom: 40px;
+
+  transition: 0.4s;
+}
+
+.logo:hover {
+  transform: scale(1.08);
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Nav links */
+.nav-item {
+  text-decoration: none;
+  color: var(--text);
+
+  padding: 16px 20px;
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(14px);
+
+  font-size: 17px;
+  font-weight: 600;
+
+  transition: 0.4s;
+}
+
+/* Hover */
+.nav-item:hover {
+  transform: translateX(8px);
+
+  box-shadow:
+    0 12px 25px rgba(37,99,235,0.15);
+
+  color: var(--blue);
+}
+
+/* Active page */
+.nav-item.active {
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #60a5fa
+  );
+
+  color: white;
+
+  box-shadow:
+    0 14px 28px rgba(37,99,235,0.25);
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 210px;
+    padding: 24px 16px;
+  }
+
+  .logo {
+    font-size: 24px;
+    margin-bottom: 28px;
+  }
+
+  .nav-item {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+
+    padding: 18px;
+
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+
+    box-shadow:
+      0 8px 25px rgba(37,99,235,0.10);
+  }
+
+  .logo {
+    margin-bottom: 18px;
+    font-size: 22px;
+  }
+
+  .nav {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 12px;
+  }
+
+  .nav-item {
+    padding: 12px 16px;
+    font-size: 14px;
+    border-radius: 14px;
+  }
+
+  .nav-item:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .sidebar {
+    padding: 14px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .nav {
+    gap: 8px;
+  }
+
+  .nav-item {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}

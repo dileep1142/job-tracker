@@ -1,0 +1,266 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+
+  background: linear-gradient(
+    135deg,
+    #dbeafe,
+    #eff6ff
+  );
+}
+
+/* MAIN */
+.analytics-container {
+  width: 100%;
+  padding: 35px;
+
+  box-sizing: border-box;
+
+  overflow-y: auto;
+}
+
+/* HEADING */
+.analytics-heading {
+  font-size: 42px;
+  font-weight: bold;
+
+  color: #1e3a8a;
+
+  margin-bottom: 35px;
+}
+
+/* GRID */
+.stats-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(240px, 1fr));
+
+  gap: 25px;
+
+  margin-bottom: 40px;
+}
+
+/* CARD */
+.analytics-card {
+  position: relative;
+
+  padding: 28px;
+
+  border-radius: 28px;
+
+  background: rgba(255,255,255,0.28);
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.4);
+
+  box-shadow:
+    0 8px 32px rgba(31,38,135,0.12);
+
+  overflow: hidden;
+
+  transition: 0.4s ease;
+}
+
+/* GLOW EFFECT */
+.analytics-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  top: -70px;
+  right: -70px;
+
+  opacity: 0.15;
+}
+
+/* HOVER */
+.analytics-card:hover {
+  transform:
+    translateY(-10px)
+    scale(1.02);
+
+  box-shadow:
+    0 20px 45px rgba(37,99,235,0.18);
+}
+
+/* TOP */
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ICON */
+.card-icon {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 18px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 25px;
+
+  background: rgba(255,255,255,0.35);
+
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* TITLE */
+.analytics-card h3 {
+  margin: 0;
+
+  font-size: 20px;
+
+  color: #374151;
+}
+
+/* NUMBER */
+.analytics-card p {
+  margin-top: 28px;
+
+  font-size: 48px;
+  font-weight: bold;
+}
+
+/* APPLIED */
+.applied-card::before {
+  background: #2563eb;
+}
+
+.applied-card p {
+  color: #2563eb;
+}
+
+/* INTERVIEW */
+.interview-card::before {
+  background: #f59e0b;
+}
+
+.interview-card p {
+  color: #f59e0b;
+}
+
+/* REJECTED */
+.rejected-card::before {
+  background: #ef4444;
+}
+
+.rejected-card p {
+  color: #ef4444;
+}
+
+/* OFFER */
+.offer-card::before {
+  background: #10b981;
+}
+
+.offer-card p {
+  color: #10b981;
+}
+
+/* CHART BOX */
+.chart-box {
+  padding: 35px;
+
+  border-radius: 30px;
+
+  background: rgba(255,255,255,0.28);
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.4);
+
+  box-shadow:
+    0 8px 32px rgba(31,38,135,0.12);
+}
+
+/* CHART TITLE */
+.chart-title {
+  text-align: center;
+
+  margin-bottom: 25px;
+
+  color: #1e3a8a;
+
+  font-size: 28px;
+}
+
+/* CHART */
+.chart-wrapper {
+  width: 100%;
+
+  max-width: 340px;
+
+  height: 340px;
+
+  margin: auto;
+}
+
+/* TABLET */
+@media (max-width: 992px) {
+
+  .analytics-container {
+    padding: 25px;
+  }
+
+  .analytics-heading {
+    text-align: center;
+    font-size: 34px;
+  }
+
+  .chart-wrapper {
+    max-width: 300px;
+    height: 300px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+  .analytics-container {
+    padding: 18px;
+  }
+
+  .analytics-heading {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-card {
+    padding: 22px;
+  }
+
+  .analytics-card p {
+    font-size: 38px;
+  }
+
+  .chart-box {
+    padding: 20px;
+  }
+
+  .chart-title {
+    font-size: 22px;
+  }
+
+  .chart-wrapper {
+    max-width: 240px;
+    height: 240px;
+  }
+}
