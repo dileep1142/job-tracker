@@ -1,76 +1,228 @@
+
 import "./Register.css";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+
+import {
+  useState,
+  useContext
+} from "react";
+
+import {
+  Link,
+  useNavigate
+} from "react-router-dom";
+
+import {
+  toast
+} from "react-toastify";
+
+import {
+  AuthContext
+} from "../context/AuthContext";
 
 function Register() {
-  const navigate = useNavigate();
 
-  const [name, setName] = useState("");
+  const navigate =
+    useNavigate();
+
+  /* CONTEXT */
+
+  const {
+    register
+  } = useContext(
+    AuthContext
+  );
+
+  /* STATES */
+
+  const [name, setName] =
+    useState("");
+
   const [email, setEmail] =
     useState("");
-  const [password, setPassword] =
+
+  const [password,
+    setPassword] =
     useState("");
+
+  const [
+    confirmPassword,
+    setConfirmPassword
+  ] = useState("");
 
   const [error, setError] =
     useState("");
 
+  const [loading,
+    setLoading] =
+    useState(false);
+
+  /* REGISTER */
+
   const handleRegister = () => {
+
+    /* EMPTY */
+
     if (
-      !name.trim() ||
-      !email.trim() ||
+      !name.trim()
+      ||
+      !email.trim()
+      ||
       !password.trim()
+      ||
+      !confirmPassword.trim()
     ) {
+
       setError(
         "Please fill all fields"
       );
+
       return;
     }
 
-    const user = {
-      name,
-      email,
-      password,
-    };
+    /* EMAIL */
 
-    localStorage.setItem(
-      "user",
-      JSON.stringify(user)
-    );
+    const emailRegex =
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (
+      !emailRegex.test(email)
+    ) {
+
+      setError(
+        "Enter valid email"
+      );
+
+      return;
+    }
+
+    /* PASSWORD */
+
+    if (
+      password.length < 6
+    ) {
+
+      setError(
+        "Password must be at least 6 characters"
+      );
+
+      return;
+    }
+
+    /* MATCH */
+
+    if (
+      password !==
+      confirmPassword
+    ) {
+
+      setError(
+        "Passwords do not match"
+      );
+
+      return;
+    }
 
     setError("");
 
-    navigate("/");
+    setLoading(true);
+
+    /* REGISTER */
+
+    const result =
+      register(
+        name,
+        email,
+        password
+      );
+
+    /* SUCCESS */
+
+    if (result.success) {
+
+      toast.success(
+        "Account Created Successfully"
+      );
+
+      setTimeout(() => {
+
+        setLoading(false);
+
+        navigate("/");
+
+      }, 1200);
+    }
+
+    /* FAILED */
+
+    else {
+
+      setLoading(false);
+
+      setError(
+        result.message
+      );
+    }
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
+  /* ENTER */
+
+  const handleKeyDown = (
+    e
+  ) => {
+
+    if (
+      e.key === "Enter"
+    ) {
+
       handleRegister();
     }
   };
 
   return (
+
     <div className="register-container">
 
       <div className="register-box">
 
-        <h1 className="register-heading">
-          Create Account
-        </h1>
+        {/* TOP */}
 
-        <p className="register-subtext">
-          Start tracking your job applications
-        </p>
+        <div className="register-top">
 
-        {error && (
-          <p className="register-error">
-            {error}
+          <h1 className="register-heading">
+            Create Account
+          </h1>
+
+          <p className="register-subtext">
+
+            Build your career journey
+            and track job applications
+
           </p>
-        )}
+
+        </div>
+
+        {/* ERROR */}
+
+        {
+
+          error && (
+
+            <p className="register-error">
+
+              {error}
+
+            </p>
+
+          )
+
+        }
+
+        {/* NAME */}
 
         <input
           className="register-input"
           type="text"
-          placeholder="Enter name"
+          placeholder="Full Name"
           value={name}
           onChange={(e) =>
             setName(
@@ -82,10 +234,12 @@ function Register() {
           }
         />
 
+        {/* EMAIL */}
+
         <input
           className="register-input"
           type="email"
-          placeholder="Enter email"
+          placeholder="Email Address"
           value={email}
           onChange={(e) =>
             setEmail(
@@ -97,10 +251,12 @@ function Register() {
           }
         />
 
+        {/* PASSWORD */}
+
         <input
           className="register-input"
           type="password"
-          placeholder="Enter password"
+          placeholder="Password"
           value={password}
           onChange={(e) =>
             setPassword(
@@ -112,23 +268,57 @@ function Register() {
           }
         />
 
+        {/* CONFIRM */}
+
+        <input
+          className="register-input"
+          type="password"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) =>
+            setConfirmPassword(
+              e.target.value
+            )
+          }
+          onKeyDown={
+            handleKeyDown
+          }
+        />
+
+        {/* BUTTON */}
+
         <button
           className="register-btn"
           onClick={
             handleRegister
           }
+          disabled={loading}
         >
-          Register
+
+          {
+            loading
+              ? "Creating..."
+              : "Create Account"
+          }
+
         </button>
 
+        {/* LOGIN */}
+
         <p className="register-text">
-          Already have account?{" "}
+
+          Already have an account?
+
+          {" "}
+
           <Link to="/">
             Login
           </Link>
+
         </p>
 
       </div>
+
     </div>
   );
 }

@@ -1,85 +1,131 @@
+
 import "./Login.css";
-import { useState, useEffect } from "react";
+
+import {
+  useState,
+  useEffect,
+  useContext
+} from "react";
 
 import {
   Link,
   useNavigate,
 } from "react-router-dom";
 
+import {
+  toast
+} from "react-toastify";
+
+import {
+  AuthContext
+} from "../context/AuthContext";
+
 function Login() {
-  const navigate = useNavigate();
+
+  const navigate =
+    useNavigate();
+
+  /* CONTEXT */
+
+  const {
+    login,
+    user
+  } = useContext(
+    AuthContext
+  );
+
+  /* STATES */
 
   const [email, setEmail] =
     useState("");
 
-  const [password, setPassword] =
-    useState("");
+  const [
+    password,
+    setPassword
+  ] = useState("");
 
   const [error, setError] =
     useState("");
 
-  /* AUTO LOGIN CHECK */
+  /* AUTO LOGIN */
+
   useEffect(() => {
-    const loggedIn =
-      localStorage.getItem("loggedIn");
 
-    if (loggedIn === "true") {
-      navigate("/app/dashboard");
+    if (user) {
+
+      navigate(
+        "/app/dashboard"
+      );
     }
-  }, [navigate]);
 
-  /* LOGIN FUNCTION */
+  }, [user, navigate]);
+
+  /* LOGIN */
+
   const handleLogin = () => {
-    const storedUser = JSON.parse(
-      localStorage.getItem("user")
-    );
 
-    /* EMPTY FIELDS */
+    /* EMPTY */
+
     if (
-      !email.trim() ||
+      !email.trim()
+      ||
       !password.trim()
     ) {
+
       setError(
         "Please fill all fields"
       );
+
       return;
     }
 
-    /* LOGIN SUCCESS */
-    if (
-      storedUser &&
-      email === storedUser.email &&
-      password ===
-        storedUser.password
-    ) {
-      localStorage.setItem(
-        "loggedIn",
-        "true"
+    /* LOGIN */
+
+    const result =
+      login(
+        email,
+        password
       );
+
+    /* SUCCESS */
+
+    if (result.success) {
 
       setError("");
 
-      alert("Login Successful");
+      toast.success(
+        "Login Successful"
+      );
 
-      navigate("/app/dashboard");
+      navigate(
+        "/app/dashboard"
+      );
     }
 
-    /* INVALID */
+    /* FAILED */
+
     else {
+
       setError(
-        "Invalid Credentials"
+        result.message
       );
     }
   };
 
-  /* ENTER KEY */
-  const handleKeyDown = (e) => {
+  /* ENTER */
+
+  const handleKeyDown = (
+    e
+  ) => {
+
     if (e.key === "Enter") {
+
       handleLogin();
     }
   };
 
   return (
+
     <div className="login-container">
 
       <div className="login-box">
@@ -93,13 +139,23 @@ function Login() {
         </p>
 
         {/* ERROR */}
-        {error && (
-          <p className="login-error">
-            {error}
-          </p>
-        )}
+
+        {
+
+          error && (
+
+            <p className="login-error">
+
+              {error}
+
+            </p>
+
+          )
+
+        }
 
         {/* EMAIL */}
+
         <input
           className="login-input"
           type="email"
@@ -116,6 +172,7 @@ function Login() {
         />
 
         {/* PASSWORD */}
+
         <input
           className="login-input"
           type="password"
@@ -132,21 +189,30 @@ function Login() {
         />
 
         {/* BUTTON */}
+
         <button
           className="login-btn"
           onClick={
             handleLogin
           }
         >
+
           Login
+
         </button>
 
         {/* REGISTER */}
+
         <p className="login-text">
+
           Don’t have account?{" "}
+
           <Link to="/register">
+
             Register
+
           </Link>
+
         </p>
 
       </div>
@@ -156,3 +222,4 @@ function Login() {
 }
 
 export default Login;
+

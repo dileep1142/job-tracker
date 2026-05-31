@@ -3,46 +3,80 @@ import {
   Routes,
   Route,
   Navigate,
+  useLocation
 } from "react-router-dom";
 
+import {
+  useState
+} from "react";
+
+import {
+  AnimatePresence
+} from "framer-motion";
+
 import Layout from "./components/Layout";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Application from "./pages/Application";
 import AddJob from "./pages/AddJob";
-import Profile from "./pages/Profile";
 import Analytics from "./pages/Analytics";
+import Profile from "./pages/Profile";
+import Kanban from "./pages/Kanban";
 
-function App() {
+function AnimatedRoutes() {
+
+  const location =
+    useLocation();
+
+  const [
+    sidebarOpen,
+    setSidebarOpen
+  ] = useState(false);
+
   return (
-    <BrowserRouter>
-      <Routes>
 
-        {/* LOGIN */}
-        <Route path="/" element={<Login />} />
+    <AnimatePresence mode="wait">
 
-        {/* REGISTER */}
+      <Routes
+        location={location}
+        key={location.pathname}
+      >
+
+        <Route
+          path="/"
+          element={<Login />}
+        />
+
         <Route
           path="/register"
           element={<Register />}
         />
 
-        {/* MAIN APP */}
         <Route
           path="/app"
-          element={<Layout />}
+          element={
+            <ProtectedRoute>
+              <Layout
+                sidebarOpen={sidebarOpen}
+                setSidebarOpen={setSidebarOpen}
+              />
+            </ProtectedRoute>
+          }
         >
-          {/* DEFAULT */}
+
           <Route
             index
             element={
-              <Navigate to="dashboard" />
+              <Navigate
+                to="dashboard"
+                replace
+              />
             }
           />
 
-          {/* PAGES */}
           <Route
             path="dashboard"
             element={<Dashboard />}
@@ -64,18 +98,37 @@ function App() {
           />
 
           <Route
+            path="kanban"
+            element={<Kanban />}
+          />
+
+          <Route
             path="profile"
             element={<Profile />}
           />
+
         </Route>
 
-        {/* INVALID ROUTE */}
         <Route
-  path="*"
-  element={<Login />}
-/>
+          path="*"
+          element={
+            <Navigate
+              to="/"
+              replace
+            />
+          }
+        />
 
       </Routes>
+
+    </AnimatePresence>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AnimatedRoutes />
     </BrowserRouter>
   );
 }

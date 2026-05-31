@@ -1,27 +1,111 @@
-import "./SearchBar.css";
+import "./Sidebar.css";
 
-function SearchBar({ search, setSearch }) {
+import {
+  Link,
+  useLocation
+} from "react-router-dom";
+
+function Sidebar({
+  sidebarOpen,
+  setSidebarOpen
+}) {
+
+  const location = useLocation();
+
   return (
-    <div className="search-wrapper">
-      <span className="search-icon">🔍</span>
 
-      <input
-        className="search-bar"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search companies, roles..."
-      />
+    <>
 
-      {search && (
+      {/* OVERLAY */}
+
+      {
+        sidebarOpen && (
+
+          <div
+            className="sidebar-overlay"
+            onClick={() =>
+              setSidebarOpen(false)
+            }
+          />
+
+        )
+      }
+
+      <div
+        className={`sidebar ${
+          sidebarOpen
+            ? "open"
+            : ""
+        }`}
+      >
+
+        {/* CLOSE BTN */}
+
         <button
-          className="clear-btn"
-          onClick={() => setSearch("")}
+          className="close-btn"
+          onClick={() =>
+            setSidebarOpen(false)
+          }
         >
           ✕
         </button>
-      )}
-    </div>
+
+        <h2 className="logo">
+          Job Tracker
+        </h2>
+
+        <nav>
+
+          <Link
+            to="/app/dashboard"
+            className={
+              location.pathname.includes("dashboard")
+                ? "active"
+                : ""
+            }
+          >
+            Dashboard
+          </Link>
+
+          <Link
+            to="/app/applications"
+            className={
+              location.pathname.includes("applications")
+                ? "active"
+                : ""
+            }
+          >
+            Applications
+          </Link>
+
+          <Link
+            to="/app/analytics"
+            className={
+              location.pathname.includes("analytics")
+                ? "active"
+                : ""
+            }
+          >
+            Analytics
+          </Link>
+
+          <Link
+            to="/app/profile"
+            className={
+              location.pathname.includes("profile")
+                ? "active"
+                : ""
+            }
+          >
+            Profile
+          </Link>
+
+        </nav>
+
+      </div>
+
+    </>
   );
 }
 
-export default SearchBar;
+export default Sidebar;

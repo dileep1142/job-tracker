@@ -1,87 +1,121 @@
-.app-layout {
+/* MAIN LAYOUT */
+
+.layout {
+
   display: flex;
+
   min-height: 100vh;
 
-  background: linear-gradient(
-    135deg,
-    #eff6ff,
-    #dbeafe
-  );
+  background:
+    linear-gradient(
+      135deg,
+      #0f172a,
+      #1e293b
+    );
 
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-/* Main content */
-.main-area {
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+
   flex: 1;
+
+  margin-left: 260px;
+
+  min-height: 100vh;
 
   display: flex;
+
   flex-direction: column;
 
-  overflow: hidden;
+  overflow-x: hidden;
+
+  transition: margin-left 0.3s ease;
 }
 
-/* Page body */
+/* =========================
+   PAGE CONTENT
+========================= */
+
 .page-content {
+
   flex: 1;
 
-  padding: 32px;
+  padding: 24px;
 
   overflow-y: auto;
 
-  backdrop-filter: blur(14px);
+  overflow-x: hidden;
 
-  transition: 0.35s ease;
+  min-height: calc(100vh - 80px);
 }
 
-/* Smooth scroll */
+/* =========================
+   SCROLLBAR
+========================= */
+
 .page-content::-webkit-scrollbar {
+
   width: 8px;
 }
 
 .page-content::-webkit-scrollbar-thumb {
-  background: rgba(37,99,235,0.25);
+
+  background: rgba(
+    255,
+    255,
+    255,
+    0.15
+  );
+
   border-radius: 20px;
 }
 
-/* Tablet */
+/* =========================
+   TABLET
+========================= */
+
 @media (max-width: 992px) {
+
   .page-content {
-    padding: 24px;
+
+    padding: 20px;
   }
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .app-layout {
-    flex-direction: column;
-  }
+/* =========================
+   MOBILE
+========================= */
 
-  .main-area {
+@media (max-width: 768px) {
+
+  .main-content {
+
+    margin-left: 0;
+
     width: 100%;
   }
 
   .page-content {
-    padding: 18px;
+
+    padding: 16px;
+
+    min-height: calc(100vh - 70px);
   }
 }
 
-/* Small mobile */
+/* =========================
+   SMALL MOBILE
+========================= */
+
 @media (max-width: 480px) {
+
   .page-content {
-    padding: 14px;
+
+    padding: 12px;
   }
-}
-
-/* Dark mode */
-[data-theme="dark"] .app-layout {
-  background: linear-gradient(
-    135deg,
-    #0f172a,
-    #1e293b
-  );
-}
-
-[data-theme="dark"] .page-content::-webkit-scrollbar-thumb {
-  background: rgba(96,165,250,0.35);
 }

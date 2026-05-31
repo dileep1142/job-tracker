@@ -3,20 +3,31 @@ import Navbar from "../components/Navbar";
 import { Outlet } from "react-router-dom";
 import "./Layout.css";
 
-function Layout() {
+function Layout({
+  sidebarOpen,
+  setSidebarOpen
+}) {
+
   return (
-    <div style={{ display: "flex" }}>
 
-      {/* SIDEBAR */}
-      <Sidebar />
+    <div className="layout">
 
-      {/* MAIN AREA */}
-      <div style={{ flex: 1 }}>
+      <Sidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
 
-        <Navbar />
+      <div className="main-content">
 
-        {/* PAGE CONTENT */}
-        <Outlet />
+        <Navbar
+          setSidebarOpen={setSidebarOpen}
+        />
+
+        <div className="page-content">
+
+          <Outlet />
+
+        </div>
 
       </div>
 

@@ -1,83 +1,19 @@
-:root {
-
-  /* LIGHT THEME */
-  --bg: #f5f7fb;
-  --surface: #ffffff;
-
-  --text: #111827;
-  --muted: #6b7280;
-
-  --border: rgba(0, 0, 0, 0.08);
-
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
-}
-
-/* DARK THEME */
-[data-theme="dark"] {
-
-  --bg: #0f172a;
-  --surface: #1e293b;
-
-  --text: #f8fafc;
-  --muted: #94a3b8;
-
-  --border: rgba(255, 255, 255, 0.08);
-
-  --primary: #3b82f6;
-  --primary-dark: #2563eb;
-}
-
-/* GLOBAL RESET */
 * {
-  margin: 0;
-  padding: 0;
-
   box-sizing: border-box;
 }
 
-/* HTML + BODY + ROOT */
 html,
 body,
 #root {
-  width: 100%;
-
+  margin: 0;
+  padding: 0;
   min-height: 100%;
-
   overflow-x: hidden;
 }
 
-/* BODY */
 body {
-
   font-family: Arial, sans-serif;
-
-  background: var(--bg);
-
-  color: var(--text);
-
-  transition:
-    background 0.3s ease,
-    color 0.3s ease;
-
-  overflow-y: auto;
+  background: #0f172a;
 }
 
-/* SCROLLBAR */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(0,0,0,0.05);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(37,99,235,0.4);
-
-  border-radius: 20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(37,99,235,0.65);
-}
+/* IMPORTANT: do NOT use overflow: hidden anywhere */
